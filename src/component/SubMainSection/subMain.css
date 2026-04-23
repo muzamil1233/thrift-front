@@ -1,0 +1,148 @@
+.wear-section1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.wear-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 6rem;
+  background-color: #f9f9f9;
+  gap: 3rem;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.wear-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.wear-content h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #222;
+  line-height: 1.2;
+}
+
+.wear-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+  line-height: 1.8;
+}
+
+.wear-content button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.wear-content button:hover {
+  background-color: #333;
+}
+
+.wear-image {
+  flex: 1.2;
+  min-width: 300px;
+}
+
+.wear-image img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================
+   Tablet
+========================= */
+@media (max-width: 992px) {
+  .wear-section {
+    padding: 3rem 2.5rem;
+    gap: 2rem;
+  }
+
+  .wear-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .wear-content p {
+    font-size: 1rem;
+  }
+}
+
+/* =========================
+   Mobile
+========================= */
+@media (max-width: 768px) {
+  .wear-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    gap: 2rem;
+  }
+
+  .wear-content {
+    order: 2;
+    min-width: 100%;
+  }
+
+  .wear-image {
+    order: 1;
+    min-width: 100%;
+  }
+
+  .wear-content h2 {
+    font-size: 2rem;
+  }
+
+  .wear-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .wear-content button {
+    width: 180px;
+  }
+}
+
+/* =========================
+   Small Mobile
+========================= */
+@media (max-width: 480px) {
+  .wear-section {
+    padding: 2rem 1rem;
+  }
+
+  .wear-content h2 {
+    font-size: 1.7rem;
+  }
+
+  .wear-content p {
+    font-size: 0.95rem;
+  }
+
+  .wear-content button {
+    width: 160px;
+    font-size: 0.95rem;
+    padding: 0.7rem 1.2rem;
+  }
+
+  .wear-image img {
+    border-radius: 6px;
+  }
+}

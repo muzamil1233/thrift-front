@@ -1,0 +1,14 @@
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width:20px */
+}
+.page{
+   color: black;
+    width: 80px;
+}
+.page-in{
+    color: black;
+    width: 40px;
+}

@@ -1,0 +1,337 @@
+/* ─────────────────────────────────────────
+   FOOTER — Full styles with social & WhatsApp
+───────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── Variables ── */
+:root {
+  --footer-bg: #0f0f13;
+  --footer-surface: #1a1a22;
+  --footer-border: rgba(255, 255, 255, 0.07);
+  --footer-text: #a0a0b0;
+  --footer-heading: #f0ede8;
+  --footer-accent: #c9a96e;
+  --wa-green: #25D366;
+  --ig-grad: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  --fb-blue: #1877F2;
+  --yt-red: #FF0000;
+  --tt-dark: #010101;
+}
+
+/* ── Floating WhatsApp Button ── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--wa-green);
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(37, 211, 102, 0.45);
+}
+
+.whatsapp-float .wa-icon {
+  font-size: 20px;
+}
+
+@media (max-width: 480px) {
+  .whatsapp-float span {
+    display: none;
+  }
+  .whatsapp-float {
+    padding: 14px;
+    border-radius: 50%;
+  }
+}
+
+/* ── Footer Base ── */
+.footer {
+  background: var(--footer-bg);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--footer-text);
+  padding: 60px 40px 0;
+  border-top: 1px solid var(--footer-border);
+}
+
+/* ── Grid Layout ── */
+.footer-container {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr 1.4fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 40px 20px 0;
+  }
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* ── Headings ── */
+.footer h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--footer-heading);
+  margin-bottom: 20px;
+  letter-spacing: 0.3px;
+}
+
+/* ── Brand Column ── */
+.footer-brand {}
+
+.footer-logo {
+  height: 50px;
+  width: auto;
+  margin-bottom: 16px;
+  filter: brightness(1.1);
+}
+
+.footer-tagline {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--footer-text);
+  max-width: 220px;
+  margin-bottom: 24px;
+}
+
+/* ── Social Icons ── */
+.social-icons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  font-size: 17px;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  opacity: 0.88;
+}
+
+.social-icon.wa  { background: var(--wa-green); }
+.social-icon.ig  { background: var(--ig-grad); }
+.social-icon.fb  { background: var(--fb-blue); }
+.social-icon.yt  { background: var(--yt-red); }
+.social-icon.tt  { background: #2d2d2d; border: 1px solid rgba(255,255,255,0.15); }
+
+/* ── Quick Links ── */
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+  color: var(--footer-text);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.15s ease;
+  position: relative;
+  padding-left: 14px;
+}
+
+.footer-links ul li a::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  transform: translateX(-4px);
+  color: var(--footer-accent);
+}
+
+.footer-links ul li a:hover {
+  color: var(--footer-accent);
+}
+
+.footer-links ul li a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Contact ── */
+.contact-item {
+  margin-bottom: 14px;
+}
+
+.contact-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--footer-accent);
+  margin-bottom: 3px;
+}
+
+.footer-contact a,
+.footer-contact p {
+  font-size: 13px;
+  color: var(--footer-text);
+  text-decoration: none;
+  line-height: 1.6;
+  transition: color 0.15s;
+}
+
+.footer-contact a:hover {
+  color: var(--footer-heading);
+}
+
+/* ── WhatsApp CTA Button ── */
+.wa-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  color: var(--wa-green);
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.wa-cta-btn:hover {
+  background: rgba(37, 211, 102, 0.2);
+  transform: translateY(-1px);
+}
+
+/* ── Query Form ── */
+.footer-query-box {}
+
+.query-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.query-form input,
+.query-form textarea {
+  background: var(--footer-surface);
+  border: 1px solid var(--footer-border);
+  color: var(--footer-heading);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.18s ease;
+  resize: none;
+}
+
+.query-form input::placeholder,
+.query-form textarea::placeholder {
+  color: #555568;
+}
+
+.query-form input:focus,
+.query-form textarea:focus {
+  border-color: var(--footer-accent);
+}
+
+.query-form textarea {
+  height: 90px;
+}
+
+.query-form button {
+  background: var(--footer-accent);
+  color: #0f0f13;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.query-form button:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.query-status {
+  font-size: 13px;
+  margin-top: 8px;
+  color: var(--footer-accent);
+}
+
+/* ── Bottom Bar ── */
+.footer-bottom {
+  border-top: 1px solid var(--footer-border);
+  padding: 20px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  color: #555568;
+}
+
+.footer-bottom-social {
+  display: flex;
+  gap: 14px;
+}
+
+.footer-bottom-social a {
+  color: #555568;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-bottom-social a:hover {
+  color: var(--footer-heading);
+}

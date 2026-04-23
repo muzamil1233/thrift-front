@@ -1,0 +1,327 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  border: 0.5px solid #e5e7eb;
+  width: 100%;
+  max-width: 860px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-bottom: 0.5px solid #e5e7eb;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #6b7280;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Two columns on desktop */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* LEFT */
+.left {
+  padding: 28px 32px;
+  border-right: 0.5px solid #e5e7eb;
+}
+
+.left h2,
+.right h2 {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 24px;
+  color: #111827;
+}
+
+.row1 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 0.5px solid #e5e7eb;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 0.5px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.row label {
+  color: #6b7280;
+}
+
+.row span {
+  color: #111827;
+}
+
+.statusBadge {
+  background: #d1fae5;
+  color: #065f46;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 12px;
+  border-radius: 999px;
+}
+
+/* RIGHT */
+.right {
+  padding: 28px 32px;
+}
+
+.billRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 0.5px solid #e5e7eb;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.billRow span:last-child {
+  color: #111827;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.total span:last-child {
+  font-size: 18px;
+}
+
+.paymentOptions {
+  margin-top: 24px;
+}
+
+.paymentLabel {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.radioOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #111827;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.radioOption input[type="radio"] {
+  accent-color: #6366f1;
+  width: 16px;
+  height: 16px;
+}
+
+.cardInput {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 13px;
+  border: 0.5px solid #d1d5db;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.payBtn {
+  margin-top: 24px;
+  width: 100%;
+  padding: 12px;
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.payBtn:hover {
+  background: #4f46e5;
+}
+
+/* ─── Tablet (≤768px) ─────────────────────────────── */
+@media (max-width: 768px) {
+  .overlay {
+    padding: 12px;
+    align-items: flex-start;
+  }
+
+  .modal {
+    border-radius: 10px;
+    margin: 12px auto;
+  }
+
+  /* Stack left and right vertically */
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .left {
+    padding: 20px 20px;
+    border-right: none;
+    border-bottom: 0.5px solid #e5e7eb;
+  }
+
+  .right {
+    padding: 20px 20px;
+  }
+
+  .left h2,
+  .right h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .header {
+    padding: 12px 20px;
+  }
+}
+
+/* ─── Mobile (≤480px) ─────────────────────────────── */
+@media (max-width: 480px) {
+  .overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  /* Slide up from bottom on small screens */
+  .modal {
+    border-radius: 16px 16px 0 0;
+    margin: 0;
+    max-height: 95dvh;
+    overflow-y: auto;
+  }
+
+  .header {
+    padding: 12px 16px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 1;
+  }
+
+  .left {
+    padding: 16px 16px;
+  }
+
+  .right {
+    padding: 16px 16px;
+  }
+
+  .left h2,
+  .right h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .row {
+    padding: 11px 0;
+    font-size: 13px;
+  }
+
+  .row1 {
+    padding: 11px 0;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+
+  .billRow {
+    padding: 10px 0;
+    font-size: 13px;
+  }
+
+  .total {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .total span:last-child {
+    font-size: 16px;
+  }
+
+  .paymentOptions {
+    margin-top: 16px;
+  }
+
+  .radioOption {
+    font-size: 13px;
+  }
+
+  .payBtn {
+    margin-top: 16px;
+    padding: 13px;
+    font-size: 14px;
+    /* Make it easy to tap */
+    min-height: 48px;
+  }
+}
