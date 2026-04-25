@@ -1,5 +1,5 @@
 import React from 'react'
-import brand from "../../assets/Rb tilla.png"
+import brand from "../../assets/thrifthub.png"
 import "../HeroSection/HeroSection.css"
 
 const HeroSection = () => {

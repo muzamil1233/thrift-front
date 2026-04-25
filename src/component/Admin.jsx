@@ -128,10 +128,10 @@ const Admin = () => {
         <input name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
         <select name="category" value={formData.category} onChange={handleChange}>
           <option value="">Select Category</option>
-          <option value="Machine">Machine </option>
-          <option value="Hand Tilla">Hand Tilla</option>
-          <option value="Aari Work">Aari work</option>
-          <option value="others">Others</option>
+          <option value="Men">Men</option>
+          <option value="Women">Woman</option>
+          <option value="Kids">Kids</option>
+          {/* <option value="others">Others</option> */}
         </select>
         <input name="type" placeholder="Type" value={formData.type} onChange={handleChange} />
         <input name="size" placeholder="Sizes (comma separated)" value={formData.size} onChange={handleChange} />

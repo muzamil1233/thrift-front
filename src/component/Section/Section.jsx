@@ -1,17 +1,17 @@
 import React from "react";
 import "./Section.css";
-import manImg from "../../assets/machine tilla.webp";
-import womanImg from "../../assets/handmade.webp";
-import kidsImg from "../../assets/AariWork.jpg";
+import manImg from "../../assets/man.jpg";
+import womanImg from "../../assets/woman.webp";
+import kidsImg from "../../assets/kids.webp";
 import { useNavigate } from "react-router-dom";
 
 const Section = () => {
 
   const navigate = useNavigate();
   const categories = [
-    { id: 1, title: "Machine", image: manImg },
-    { id: 2, title: "Hand Tilla", image: womanImg },
-    { id: 3, title: "Aari Work", image: kidsImg },
+    { id: 1, title: "Men", image: manImg },
+    { id: 2, title: "Women", image: womanImg },
+    { id: 3, title: "Kid", image: kidsImg },
   ];
 
   return (
