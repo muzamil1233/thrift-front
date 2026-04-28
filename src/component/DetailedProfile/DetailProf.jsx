@@ -25,7 +25,7 @@ const ImageSlider = ({ images, name }) => {
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "400px", overflow: "hidden", borderRadius: "10px" }}>
+    <div style={{ position: "relative", width: "100%", height: "100%", minHeight: "480px", overflow: "hidden", borderRadius: "0" }}>
 
       {/* Main Image */}
       <img
@@ -35,7 +35,7 @@ const ImageSlider = ({ images, name }) => {
 // src={getImageUrl(img)}
         alt={`${name}-${current}`}
         className="main-image"
-        style={{ width: "100%", height: "400px", objectFit: "cover", borderRadius: "10px" }}
+       style={{ width: "100%", height: "100%", minHeight: "480px", objectFit: "cover", borderRadius: "0" }}
       />
 
       {/* Arrows — only if more than 1 image */}
@@ -127,6 +127,7 @@ const DetailProf = () => {
    console.log("cartitem : ",cartItems)
     const [countCart, setCountCart] = useState([]);
     console.log("countcart", countCart)
+    const [selectedSize, setSelectedSize] = useState(null);
    
 
   useEffect(() => {
@@ -300,10 +301,24 @@ const handleQuantityChange = async (itemId, delta) => {
     <span>{product.material || "N/A"}</span>
   </p>
 
-  <p className="pro-det">
-    <strong>Sizes</strong>
-    <span>{product.size?.join(", ") || "N/A"}</span>
-  </p>
+  <div className="size-section">
+  <strong>Sizes:</strong>
+  <div className="size-options">
+    {product.size?.length > 0 ? (
+      product.size.map((s, index) => (
+        <button
+          key={index}
+          className={`size-btn ${selectedSize === s ? "selected" : ""}`}
+          onClick={() => setSelectedSize(s)}
+        >
+          {s}
+        </button>
+      ))
+    ) : (
+      <span>N/A</span>
+    )}
+  </div>
+</div>
 
 </div>
 
@@ -341,7 +356,7 @@ const handleQuantityChange = async (itemId, delta) => {
     if (!currentItem) return null;
 
     return (
-      <div>
+      <div className="quantity-controls">
         <button
           onClick={() => handleQuantityChange(currentItem._id, -1)}
           style={{ padding: "3px 8px", borderRadius: "4px" }}

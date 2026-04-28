@@ -102,11 +102,11 @@ const Footer = () => {
           <div className="footer-links">
             <h3>Collections</h3>
             <ul>
-              <li><Link to="/category/HandTilla">Hand Tilla</Link></li>
-              <li><Link to="/category/Machine">Machine Embroidery</Link></li>
-              <li><Link to="/category/Aari">Aari Work</Link></li>
-              <li><Link to="/category/women">Women</Link></li>
-              <li><Link to="/category/kids">Kids</Link></li>
+              <li><Link to="/category/Men">Men</Link></li>
+              <li><Link to="/category/Women">Women</Link></li>
+              <li><Link to="/category/Kids">Kids</Link></li>
+              {/* <li><Link to="/category/women">Women</Link></li> */}
+              {/* <li><Link to="/category/kids">Kids</Link></li> */}
             </ul>
           </div>
 

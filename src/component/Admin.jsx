@@ -9,10 +9,11 @@ const Admin = () => {
   const token = localStorage.getItem("token");
 
   const [formData, setFormData] = useState({
-    name: "", category: "", type: "", size: "", color: "",
-    material: "", price: "", stock: "", brand: "",
-    description: "", isFeatured: false,
-  });
+  name: "", category: "", type: "", size: "", color: "",
+  material: "", price: "", originalPrice: "", discount: "",
+  rating: "", offer: "", badge: "",
+  stock: "", brand: "", description: "", isFeatured: false,
+});
 
   const [selectedImages, setSelectedImages] = useState([]); // new files
   const [existingImages, setExistingImages] = useState([]); // already saved image paths (e.g. /uploads/xx.jpg)
@@ -28,19 +29,24 @@ const Admin = () => {
         const data = await response.json();
 
         if (response.ok) {
-          setFormData({
-            name: data.name || "",
-            category: data.category || "",
-            type: data.type || "",
-            size: Array.isArray(data.size) ? data.size.join(", ") : data.size || "",
-            color: Array.isArray(data.color) ? data.color.join(", ") : data.color || "",
-            material: data.material || "",
-            price: data.price || "",
-            stock: data.stock || "",
-            brand: data.brand || "",
-            description: data.description || "",
-            isFeatured: data.isFeatured || false,
-          });
+         setFormData({
+  name: data.name || "",
+  category: data.category || "",
+  type: data.type || "",
+  size: Array.isArray(data.size) ? data.size.join(", ") : data.size || "",
+  color: Array.isArray(data.color) ? data.color.join(", ") : data.color || "",
+  material: data.material || "",
+  price: data.price || "",
+  originalPrice: data.originalPrice || "",   // ✅ new
+  discount: data.discount || "",             // ✅ new
+  rating: data.rating || "",                 // ✅ new
+  offer: data.offer || "",                   // ✅ new
+  badge: data.badge || "",                   // ✅ new
+  stock: data.stock || "",
+  brand: data.brand || "",
+  description: data.description || "",
+  isFeatured: data.isFeatured || false,
+});
 
           // ✅ Store raw paths like /uploads/image.jpg
           if (data.images?.length > 0) {
@@ -138,6 +144,16 @@ const Admin = () => {
         <input name="color" placeholder="Colors (comma separated)" value={formData.color} onChange={handleChange} />
         <input name="material" placeholder="Material" value={formData.material} onChange={handleChange} />
         <input type="number" name="price" placeholder="Price" value={formData.price} onChange={handleChange} />
+        
+
+{/* ✅ New fields */}
+<input type="number" name="originalPrice" placeholder="Original Price (MRP)" value={formData.originalPrice} onChange={handleChange} />
+<input type="number" name="discount" placeholder="Discount % (auto-calculated if empty)" value={formData.discount} onChange={handleChange} />
+<input type="number" name="rating" placeholder="Rating (e.g. 4.5)" step="0.1" min="0" max="5" value={formData.rating} onChange={handleChange} />
+<input name="offer" placeholder="Offer text (e.g. Buy 2 for 1199)" value={formData.offer} onChange={handleChange} />
+<input name="badge" placeholder="Badge (e.g. OVERSIZED FIT)" value={formData.badge} onChange={handleChange} />
+
+
         <input type="number" name="stock" placeholder="Stock" value={formData.stock} onChange={handleChange} />
         <input name="brand" placeholder="Brand" value={formData.brand} onChange={handleChange} />
         <textarea name="description" placeholder="Description" value={formData.description} onChange={handleChange} />

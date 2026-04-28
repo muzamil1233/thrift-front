@@ -111,9 +111,9 @@ const Topbar = () => {
         </div>
 
         <div className={`navlinks ${menuOpen ? "active" : ""}`}>
-          <span onClick={() => navigate("/category/Hand Tilla")}>Hand Tilla</span>
-          <span onClick={() => navigate("/category/Aari Work")}>Aari Work</span>
-          <span onClick={() => navigate("/category/Machine")}>Machine</span>
+          <span onClick={() => navigate("/category/Men")}>Men</span>
+          <span onClick={() => navigate("/category/Women")}>Women</span>
+          <span onClick={() => navigate("/category/Kids")}>Kids</span>
         </div>
 
         <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>

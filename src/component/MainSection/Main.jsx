@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../MainSection/Main.css";
-import Pagination from "../Pagination"; // import your component
+import Pagination from "../Pagination";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../api/baseUrl";
+
 const getImageUrl = (img) => {
   if (!img) return "";
   if (img.startsWith("http")) return img;
@@ -10,64 +11,42 @@ const getImageUrl = (img) => {
   return `${BASE_URL}/uploads/${img}`;
 };
 
-
 const ImageSlider = ({ images }) => {
   const [current, setCurrent] = useState(0);
 
   if (!images || images.length === 0) return null;
 
   const prevSlide = (e) => {
-    e.stopPropagation(); // ✅ prevent navigating to detail page
+    e.stopPropagation();
     setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
   const nextSlide = (e) => {
-    e.stopPropagation(); // ✅ prevent navigating to detail page
+    e.stopPropagation();
     setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "250px", overflow: "hidden" }}>
-      
-      {/* Image */}
+    <div style={{ position: "relative", width: "100%",  }}>
       <img
-        // src={`${BASE_URL}${images[current]}`}
-        // src={images[current]}
         src={getImageUrl(images[current])}
         alt={`slide-${current}`}
-        style={{ width: "100%", height: "250px", objectFit: "cover" }}
+  style={{ width: "100%", height: "auto", display: "block" }} 
       />
-
-      {/* Only show arrows if more than 1 image */}
       {images.length > 1 && (
         <>
-          {/* Left Arrow */}
-          <button
-            onClick={prevSlide}
-            style={{
-              position: "absolute", top: "50%", left: "6px",
-              transform: "translateY(-50%)",
-              background: "rgba(0,0,0,0.5)", color: "white",
-              border: "none", borderRadius: "50%",
-              width: "28px", height: "28px",
-              cursor: "pointer", fontSize: "14px"
-            }}
-          >‹</button>
-
-          {/* Right Arrow */}
-          <button
-            onClick={nextSlide}
-            style={{
-              position: "absolute", top: "50%", right: "6px",
-              transform: "translateY(-50%)",
-              background: "rgba(0,0,0,0.5)", color: "white",
-              border: "none", borderRadius: "50%",
-              width: "28px", height: "28px",
-              cursor: "pointer", fontSize: "14px"
-            }}
-          >›</button>
-
-          {/* Dots */}
+          <button onClick={prevSlide} style={{
+            position: "absolute", top: "50%", left: "6px",
+            transform: "translateY(-50%)", background: "rgba(0,0,0,0.5)",
+            color: "white", border: "none", borderRadius: "50%",
+            width: "28px", height: "28px", cursor: "pointer", fontSize: "14px"
+          }}>‹</button>
+          <button onClick={nextSlide} style={{
+            position: "absolute", top: "50%", right: "6px",
+            transform: "translateY(-50%)", background: "rgba(0,0,0,0.5)",
+            color: "white", border: "none", borderRadius: "50%",
+            width: "28px", height: "28px", cursor: "pointer", fontSize: "14px"
+          }}>›</button>
           <div style={{
             position: "absolute", bottom: "6px", width: "100%",
             display: "flex", justifyContent: "center", gap: "5px"
@@ -93,22 +72,18 @@ const ImageSlider = ({ images }) => {
 const Main = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 8;
+  const productsPerPage = 6;
   const navigate = useNavigate();
-
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(
-          `${BASE_URL}/api/cloth/getClothes`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/cloth/getClothes`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -128,44 +103,42 @@ const Main = () => {
       <h2>New Arrivals for The World</h2>
       <div className="products-grid">
         {currentProducts.map((product) => (
-          <div className="product-card"
-           key={product.id}
-           onClick={() => navigate(`/detailprof/${product._id}`)}
-           >
-             {/* <img
-        src={`${BASE_URL}${product.images?.[0]}`}
-        alt={product.name}
-        style={{ width: "100%", height: "250px", objectFit: "cover" }}
-      /> */}
-      <ImageSlider images={product.images} />
-            <h3>{product.name}</h3>
-            <p>₹{product.price}</p>
-            <div className="color-selection">
-              {product.color?.map((color, idx) => (
-                <button
-                  key={idx}
-                  className="chip-button"
-                  style={{ backgroundColor: color }}
-                >
-                  {color}
-                </button>
-              ))}
+          <div
+            className="product-card"
+            key={product._id}
+            onClick={() => navigate(`/detailprof/${product._id}`)}
+          >
+           <div className="img-wrap">
+  <ImageSlider images={product.images} />
+  <span className="badge">{product.badge || "NEW ARRIVAL"}</span>
+  <span className="wishlist">♡</span>
+  <span className="rating">⭐ {product.rating || "4.5"}</span>  {/* must be inside img-wrap */}
+</div>
+
+            <div className="card-body">
+              <p className="brand">TheWorldHub®</p>
+              
+              <p className="pname">{product.name}</p>
+              <div className="price-row">
+               <span className="price">₹{product.price}</span>
+<span className="orig">₹{product.originalPrice}</span>
+<span className="disc">{product.discount}% OFF</span>
+              </div>
+            
+<div className="offer-tag">✦ {product.offer || "Buy 2 for 1199"}</div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Pagination */}
       <div className="pagination">
-         <Pagination
-        currPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={(page) => setCurrentPage(page)}
-      />
+        <Pagination
+          currPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
       </div>
-     
     </div>
-    
   );
 };
 
