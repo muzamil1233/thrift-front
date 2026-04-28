@@ -61,7 +61,7 @@ const Login = () => {
   return (
     <div className="outer">
       <div className="main">
-        <h1>RB TILLA DESIGNER</h1>
+        <h1>The World Thrift Hub</h1>
 
         {/* Dynamic heading based on role */}
         <h3>{isAdmin ? "Admin Login" : "User Login"}</h3>
