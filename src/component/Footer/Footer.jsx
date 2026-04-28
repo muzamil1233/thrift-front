@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../Footer/Footer.css";
-import logo from "../../assets/logo1.png";
+import logo from "../../assets/logo2.png";
 import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import {
@@ -91,10 +91,10 @@ const Footer = () => {
                 rel="noopener noreferrer" className="social-icon yt" aria-label="YouTube">
                 <FaYoutube />
               </a>
-              <a href="https://tiktok.com/@YOUR_HANDLE" target="_blank"
+              {/* <a href="https://tiktok.com/@YOUR_HANDLE" target="_blank"
                 rel="noopener noreferrer" className="social-icon tt" aria-label="TikTok">
                 <FaTiktok />
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -170,7 +170,7 @@ const Footer = () => {
 
         {/* ── Bottom Bar ── */}
         <div className="footer-bottom">
-          <p>© 2025 Tulos Fashion. All Rights Reserved.</p>
+          <p>© 2026 The World Thrift Hub · Style That Tells a Story. All Rights Reserved.</p>
           <div className="footer-bottom-social">
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a>
             <a href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>

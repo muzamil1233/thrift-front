@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;600&display=swap');
+
 /* =========================
    New Arrivals Section
 ========================= */
@@ -6,10 +8,50 @@
 }
 
 .new-arrivals h2 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 20px;
+  font-size: 52px;
+  font-weight: 900;
   text-align: center;
+  margin-bottom: 36px;
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(135deg,
+    #1a1a2e 0%,
+    #c8a96e 30%,
+    #f5e6c8 50%,
+    #c8a96e 70%,
+    #1a1a2e 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  position: relative;
+  display: block;
+  filter: drop-shadow(0 6px 28px rgba(200, 169, 110, 0.3));
+}
+
+/* Glowing underline bar */
+.new-arrivals h2::after {
+  content: '';
+  display: block;
+  margin: 10px auto 0;
+  width: 80px;
+  height: 3px;
+  border-radius: 100px;
+  background: linear-gradient(90deg, transparent, #c8a96e, #f5e6c8, #c8a96e, transparent);
+  animation: lineGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 250% center; }
+  100% { background-position: -250% center; }
+}
+
+@keyframes lineGlow {
+  0%, 100% { opacity: 0.35; width: 60px; }
+  50%       { opacity: 1;    width: 130px; }
 }
 
 /* =========================
@@ -182,6 +224,9 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
+  .new-arrivals h2 {
+    font-size: 42px;
+  }
 }
 
 /* =========================
@@ -198,7 +243,8 @@
   }
 
   .new-arrivals h2 {
-    font-size: 18px;
+    font-size: 34px;
+    letter-spacing: -0.5px;
   }
 }
 
@@ -219,6 +265,11 @@
     padding: 8px 10px 10px;
   }
 
+  .new-arrivals h2 {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+
   .brand { font-size: 11px; }
   .pname { font-size: 11px; }
   .price { font-size: 13px; }
@@ -227,7 +278,6 @@
   .offer-tag { font-size: 10px; padding: 3px 7px; }
   .badge { font-size: 9px; padding: 2px 6px; }
   .wishlist { width: 26px; height: 26px; font-size: 13px; }
-  .new-arrivals h2 { font-size: 16px; }
 }
 
 /* =========================
@@ -236,6 +286,9 @@
 @media (max-width: 360px) {
   .products-grid {
     grid-template-columns: 1fr;
+  }
+  .new-arrivals h2 {
+    font-size: 24px;
   }
 }
 

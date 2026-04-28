@@ -1,70 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,700&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* =========================
+   Outer Wrapper
+========================= */
 .wear-section1 {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
+  background: #0a0a0f;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Ambient glow top-left */
+.wear-section1::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(200,169,110,0.10) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ambient glow bottom-right */
+.wear-section1::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(200,169,110,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =========================
+   Inner Section
+========================= */
 .wear-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4rem 6rem;
-  background-color: #f9f9f9;
-  gap: 3rem;
+  padding: 6rem 6rem;
+  gap: 5rem;
   width: 100%;
+  max-width: 1200px;
   box-sizing: border-box;
-  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 
+/* =========================
+   Content — Left
+========================= */
 .wear-content {
   flex: 1;
   min-width: 300px;
 }
 
+/* Ornament above heading */
+.wear-content h2::before {
+  content: '— ✦ —';
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  color: #c8a96e;
+  opacity: 0.8;
+  margin-bottom: 0.4em;
+}
+
 .wear-content h2 {
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #222;
-  line-height: 1.2;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 1.6rem;
+
+  /* Gold shimmer */
+  background: linear-gradient(
+    120deg,
+    #5a4a2a 0%,
+    #c8a96e 20%,
+    #f5e6c8 38%,
+    #fffaf0 50%,
+    #f5e6c8 62%,
+    #c8a96e 80%,
+    #5a4a2a 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 6s linear infinite;
+  filter: drop-shadow(0 0 30px rgba(200,169,110,0.25));
+}
+
+/* Gold divider line after heading */
+.wear-content h2::after {
+  content: '';
+  display: block;
+  margin-top: 0.5em;
+  height: 1px;
+  width: 80px;
+  background: linear-gradient(90deg, #c8a96e, transparent);
 }
 
 .wear-content p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #555;
-  line-height: 1.8;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.97rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.95;
+  margin-bottom: 2rem;
+  letter-spacing: 0.01em;
+  border-left: 1px solid rgba(200,169,110,0.3);
+  padding-left: 1.2rem;
 }
 
 .wear-content button {
-  background-color: black;
-  color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  background: transparent;
+  color: #f5e6c8;
+  border: 1px solid rgba(200,169,110,0.7);
+  padding: 0.65rem 2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   cursor: pointer;
-  border-radius: 4px;
-  transition: 0.3s;
+  border-radius: 100px;
+  transition: all 0.3s ease;
 }
 
 .wear-content button:hover {
-  background-color: #333;
+  background: #c8a96e;
+  color: #0a0a0f;
+  border-color: #c8a96e;
+  box-shadow: 0 4px 24px rgba(200,169,110,0.3);
 }
 
+/* =========================
+   Image — Right
+========================= */
 .wear-image {
   flex: 1.2;
   min-width: 300px;
+  position: relative;
+}
+
+/* Gold corner accent top-left */
+.wear-image::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 60px;
+  height: 60px;
+  border-top: 1.5px solid #c8a96e;
+  border-left: 1.5px solid #c8a96e;
+  border-radius: 2px 0 0 0;
+  z-index: 2;
+  opacity: 0.7;
+}
+
+/* Gold corner accent bottom-right */
+.wear-image::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  right: -12px;
+  width: 60px;
+  height: 60px;
+  border-bottom: 1.5px solid #c8a96e;
+  border-right: 1.5px solid #c8a96e;
+  border-radius: 0 0 2px 0;
+  z-index: 2;
+  opacity: 0.7;
 }
 
 .wear-image img {
   width: 100%;
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+  height: 520px;
   object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  display: block;
+  filter: brightness(0.88) saturate(0.9);
+  transition: filter 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(200,169,110,0.15);
+}
+
+.wear-image:hover img {
+  filter: brightness(1) saturate(1.05);
+  transform: scale(1.01);
+}
+
+/* =========================
+   Animation
+========================= */
+@keyframes goldShimmer {
+  0%   { background-position: 300% center; }
+  100% { background-position: -300% center; }
 }
 
 /* =========================
@@ -72,16 +220,8 @@
 ========================= */
 @media (max-width: 992px) {
   .wear-section {
-    padding: 3rem 2.5rem;
-    gap: 2rem;
-  }
-
-  .wear-content h2 {
-    font-size: 2.2rem;
-  }
-
-  .wear-content p {
-    font-size: 1rem;
+    padding: 4rem 3rem;
+    gap: 3rem;
   }
 }
 
@@ -92,8 +232,8 @@
   .wear-section {
     flex-direction: column;
     text-align: center;
-    padding: 2.5rem 1.5rem;
-    gap: 2rem;
+    padding: 3.5rem 1.5rem;
+    gap: 2.5rem;
   }
 
   .wear-content {
@@ -106,17 +246,20 @@
     min-width: 100%;
   }
 
-  .wear-content h2 {
-    font-size: 2rem;
+  .wear-image img {
+    height: 320px;
+  }
+
+  .wear-content h2::after {
+    margin: 0.5em auto 0;
   }
 
   .wear-content p {
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-
-  .wear-content button {
-    width: 180px;
+    border-left: none;
+    border-top: 1px solid rgba(200,169,110,0.3);
+    padding-left: 0;
+    padding-top: 1rem;
+    text-align: left;
   }
 }
 
@@ -125,24 +268,16 @@
 ========================= */
 @media (max-width: 480px) {
   .wear-section {
-    padding: 2rem 1rem;
-  }
-
-  .wear-content h2 {
-    font-size: 1.7rem;
-  }
-
-  .wear-content p {
-    font-size: 0.95rem;
-  }
-
-  .wear-content button {
-    width: 160px;
-    font-size: 0.95rem;
-    padding: 0.7rem 1.2rem;
+    padding: 2.5rem 1rem;
   }
 
   .wear-image img {
-    border-radius: 6px;
+    height: 260px;
+  }
+
+  .wear-image::before,
+  .wear-image::after {
+    width: 40px;
+    height: 40px;
   }
 }

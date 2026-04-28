@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import outfit from "../../assets/Logo.jpeg";
+import outfit from "../../assets/Logo2.png";
 import SearchIcon from "../../assets/search.png";
 import "../Header/Topbar.css";
 import { useNavigate } from "react-router-dom";
@@ -106,7 +106,7 @@ const Topbar = () => {
 
       {/* ── LEFT: Logo + Nav + Hamburger ── */}
       <div className="leftSection">
-        <div className="logo">
+        <div className="logo" onClick={()=>navigate("/")} style={{ cursor: "pointer" }} >
           <img src={outfit} alt="Shop Logo" />
         </div>
 

@@ -16,7 +16,7 @@ const Section = () => {
 
   return (
     <div className="category-section">
-      <h2 className="category-heading"> Category</h2>
+      <h2 className="category-heading"> Dress Your World</h2>
       <div className="category-grid">
         {categories.map((cat) => (
           <div className="category-card" key={cat.id}>
